@@ -1,0 +1,690 @@
+<html lang="id">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Toko Kosmetik Ella
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Poppins', sans-serif;
+    }
+   /* Floating animated bubbles for header background */
+   #header-bubbles {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     overflow: visible;
+     pointer-events: none;
+     z-index: -1;
+   }
+   .bubble {
+     position: absolute;
+     border-radius: 50%;
+     opacity: 0.15;
+     animation-timing-function: linear;
+     animation-iteration-count: infinite;
+   }
+   @keyframes floatUp {
+     0% {
+       transform: translateY(100%) scale(1);
+       opacity: 0.15;
+     }
+     50% {
+       opacity: 0.3;
+     }
+     100% {
+       transform: translateY(-150%) scale(1.2);
+       opacity: 0;
+     }
+   }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-800">
+  <!-- Header / Navbar -->
+  <header class="bg-white shadow sticky top-0 z-50 relative overflow-visible">
+   <div aria-hidden="true" id="header-bubbles">
+    <div class="bubble bg-pink-300 w-20 h-20 left-10 bottom-0 animate-floatUp" style="animation-duration: 15s; animation-name: floatUp; animation-delay: 0s;">
+    </div>
+    <div class="bubble bg-pink-400 w-12 h-12 left-32 bottom-0 animate-floatUp" style="animation-duration: 12s; animation-name: floatUp; animation-delay: 3s;">
+    </div>
+    <div class="bubble bg-pink-200 w-16 h-16 left-48 bottom-0 animate-floatUp" style="animation-duration: 18s; animation-name: floatUp; animation-delay: 6s;">
+    </div>
+    <div class="bubble bg-pink-300 w-10 h-10 left-64 bottom-0 animate-floatUp" style="animation-duration: 14s; animation-name: floatUp; animation-delay: 9s;">
+    </div>
+    <div class="bubble bg-pink-400 w-24 h-24 left-80 bottom-0 animate-floatUp" style="animation-duration: 20s; animation-name: floatUp; animation-delay: 2s;">
+    </div>
+   </div>
+   <div class="container mx-auto px-4 py-4 flex items-center justify-between relative z-10">
+    <div class="flex items-center space-x-3">
+     <img alt="Logo Toko Kosmetik Ella, huruf E bergaya dengan warna pink dan putih" class="w-12 h-12 rounded-full shadow-lg" height="48" src="https://storage.googleapis.com/a1aa/image/325160b5-cd21-404f-b700-f36a96297f05.jpg" width="48"/>
+     <h1 class="text-2xl font-extrabold text-pink-600 tracking-wide drop-shadow-md">
+      Toko Kosmetik Ella
+     </h1>
+    </div>
+    <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+     <a class="hover:text-pink-600 transition relative group" href="#beranda">
+      Beranda
+      <span class="absolute left-0 -bottom-1 w-0 group-hover:w-full h-0.5 bg-pink-600 transition-all rounded">
+      </span>
+     </a>
+     <a class="hover:text-pink-600 transition relative group" href="#produk">
+      Produk
+      <span class="absolute left-0 -bottom-1 w-0 group-hover:w-full h-0.5 bg-pink-600 transition-all rounded">
+      </span>
+     </a>
+     <a class="hover:text-pink-600 transition relative group" href="#tentang">
+      Tentang Kami
+      <span class="absolute left-0 -bottom-1 w-0 group-hover:w-full h-0.5 bg-pink-600 transition-all rounded">
+      </span>
+     </a>
+     <a class="hover:text-pink-600 transition relative group" href="#blog">
+      Blog
+      <span class="absolute left-0 -bottom-1 w-0 group-hover:w-full h-0.5 bg-pink-600 transition-all rounded">
+      </span>
+     </a>
+     <a class="hover:text-pink-600 transition relative group" href="#kontak">
+      Kontak
+      <span class="absolute left-0 -bottom-1 w-0 group-hover:w-full h-0.5 bg-pink-600 transition-all rounded">
+      </span>
+     </a>
+    </nav>
+    <div class="flex items-center space-x-5">
+     <button aria-label="Cari produk" class="text-gray-600 hover:text-pink-600 transition text-lg md:text-xl" id="search-button" title="Cari produk">
+      <i class="fas fa-search">
+      </i>
+     </button>
+     <button aria-label="Akun pengguna" class="text-gray-600 hover:text-pink-600 transition text-lg md:text-xl" title="Akun pengguna">
+      <i class="fas fa-user">
+      </i>
+     </button>
+     <button aria-label="Keranjang belanja" class="relative text-gray-600 hover:text-pink-600 transition text-lg md:text-xl" id="cart-button" title="Keranjang belanja">
+      <i class="fas fa-shopping-cart">
+      </i>
+      <span class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center font-semibold" id="cart-count">
+       0
+      </span>
+     </button>
+    </div>
+    <!-- Mobile menu button -->
+    <button aria-label="Toggle menu" class="md:hidden text-gray-700 hover:text-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-600" id="mobile-menu-button" title="Menu">
+     <i class="fas fa-bars text-2xl">
+     </i>
+    </button>
+   </div>
+   <!-- Mobile menu -->
+   <nav aria-label="Mobile menu" class="hidden md:hidden bg-white border-t border-gray-200" id="mobile-menu">
+    <a class="block px-6 py-3 border-b border-gray-200 hover:bg-pink-50 text-pink-600 font-semibold" href="#beranda">
+     Beranda
+    </a>
+    <a class="block px-6 py-3 border-b border-gray-200 hover:bg-pink-50" href="#produk">
+     Produk
+    </a>
+    <a class="block px-6 py-3 border-b border-gray-200 hover:bg-pink-50" href="#tentang">
+     Tentang Kami
+    </a>
+    <a class="block px-6 py-3 border-b border-gray-200 hover:bg-pink-50" href="#blog">
+     Blog
+    </a>
+    <a class="block px-6 py-3 hover:bg-pink-50" href="#kontak">
+     Kontak
+    </a>
+   </nav>
+  </header>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-r from-pink-100 via-pink-200 to-pink-100 overflow-hidden flex flex-col md:flex-row items-center justify-between container mx-auto px-6 py-20 md:py-28 rounded-b-3xl shadow-lg" id="beranda">
+   <div class="max-w-xl text-center md:text-left z-10">
+    <h2 class="text-5xl font-extrabold text-pink-700 leading-tight mb-6 drop-shadow-md">
+     Temukan Kecantikan Alami Anda
+     <br/>
+     Bersama Ella Cosmetics
+    </h2>
+    <p class="text-lg text-pink-900 mb-10 font-medium drop-shadow-sm">
+     Produk skincare dan makeup berkualitas premium yang dirancang untuk menonjolkan pesona alami Anda.
+    </p>
+    <a aria-label="Belanja Sekarang" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold px-10 py-4 rounded-full shadow-xl transition transform hover:scale-105" href="#produk" role="button">
+     Belanja Sekarang
+    </a>
+   </div>
+   <div class="mt-12 md:mt-0 max-w-lg relative z-10">
+    <img alt="Wanita cantik sedang mengaplikasikan makeup dengan latar belakang pink lembut, kulit bercahaya, dan gaya elegan" class="rounded-3xl shadow-2xl object-cover w-full" height="400" src="https://storage.googleapis.com/a1aa/image/d87206e0-7ee5-4c02-e2c7-5fa002b9b09e.jpg" width="600"/>
+    <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-pink-300 rounded-full filter blur-3xl opacity-40 animate-pulse">
+    </div>
+   </div>
+   <!-- Decorative floating petals -->
+   <img alt="Ilustrasi kelopak bunga mawar pink transparan melayang di latar belakang" class="pointer-events-none absolute top-10 right-10 w-24 opacity-30 animate-floatSlow" height="96" src="https://storage.googleapis.com/a1aa/image/7a75fdad-1819-4b54-7a68-f8c92e857d8b.jpg" width="96"/>
+   <img alt="Ilustrasi kelopak bunga mawar pink transparan melayang di latar belakang" class="pointer-events-none absolute bottom-20 left-10 w-20 opacity-25 animate-floatSlow delay-2000" height="80" src="https://storage.googleapis.com/a1aa/image/7a75fdad-1819-4b54-7a68-f8c92e857d8b.jpg" width="80"/>
+  </section>
+  <!-- Produk Section -->
+  <section class="container mx-auto px-6 py-16" id="produk">
+   <h3 class="text-3xl font-extrabold text-pink-700 mb-12 text-center tracking-wide drop-shadow-sm">
+    Produk Unggulan
+   </h3>
+   <div aria-label="Produk kosmetik unggulan" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden flex flex-col transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <img alt="Botol serum wajah hydrating dengan pipet, botol kaca transparan berisi cairan pink" class="w-full h-64 object-cover rounded-t-2xl" height="400" src="https://storage.googleapis.com/a1aa/image/4a34c94d-0689-434d-b435-65b29b0a0847.jpg" width="400"/>
+     <div class="p-6 flex flex-col flex-grow">
+      <h4 class="text-lg font-semibold text-pink-700 mb-3 tracking-wide">
+       Serum Wajah Hydrating
+      </h4>
+      <p class="text-gray-600 flex-grow leading-relaxed">
+       Tingkatkan kelembapan kulit dengan serum ringan yang cepat meresap ini.
+      </p>
+      <div class="mt-6 flex items-center justify-between">
+       <span class="text-pink-600 font-extrabold text-xl tracking-wide">
+        Rp429.000
+       </span>
+       <button aria-label="Tambah Serum Wajah Hydrating ke keranjang" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full shadow-lg transition font-semibold add-to-cart">
+        Tambah
+       </button>
+      </div>
+     </div>
+    </article>
+    <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden flex flex-col transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <img alt="Tabung lipstik cair matte warna merah menyala dengan aplikator" class="w-full h-64 object-cover rounded-t-2xl" height="400" src="https://storage.googleapis.com/a1aa/image/4592018b-dcd9-49c0-6ed3-7ea43d56105b.jpg" width="400"/>
+     <div class="p-6 flex flex-col flex-grow">
+      <h4 class="text-lg font-semibold text-pink-700 mb-3 tracking-wide">
+       Lipstik Cair Matte
+      </h4>
+      <p class="text-gray-600 flex-grow leading-relaxed">
+       Lipstik tahan lama, anti luntur dengan warna pekat dan hasil akhir velvet.
+      </p>
+      <div class="mt-6 flex items-center justify-between">
+       <span class="text-pink-600 font-extrabold text-xl tracking-wide">
+        Rp289.000
+       </span>
+       <button aria-label="Tambah Lipstik Cair Matte ke keranjang" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full shadow-lg transition font-semibold add-to-cart">
+        Tambah
+       </button>
+      </div>
+     </div>
+    </article>
+    <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden flex flex-col transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <img alt="Compact blush on warna pink lembut dengan cermin di dalamnya" class="w-full h-64 object-cover rounded-t-2xl" height="400" src="https://storage.googleapis.com/a1aa/image/bed14cdb-0875-4ec0-662f-98e9be8b0a8d.jpg" width="400"/>
+     <div class="p-6 flex flex-col flex-grow">
+      <h4 class="text-lg font-semibold text-pink-700 mb-3 tracking-wide">
+       Blush On Natural Glow
+      </h4>
+      <p class="text-gray-600 flex-grow leading-relaxed">
+       Berikan rona alami yang lembut untuk tampilan segar dan bercahaya.
+      </p>
+      <div class="mt-6 flex items-center justify-between">
+       <span class="text-pink-600 font-extrabold text-xl tracking-wide">
+        Rp379.000
+       </span>
+       <button aria-label="Tambah Blush On Natural Glow ke keranjang" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full shadow-lg transition font-semibold add-to-cart">
+        Tambah
+       </button>
+      </div>
+     </div>
+    </article>
+    <article class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition overflow-hidden flex flex-col transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <img alt="Krim mata revitalizing dalam jar dengan tutup putih dan label pink lembut" class="w-full h-64 object-cover rounded-t-2xl" height="400" src="https://storage.googleapis.com/a1aa/image/96d23f5b-5f7a-47b0-9e00-c1f3e367ccbc.jpg" width="400"/>
+     <div class="p-6 flex flex-col flex-grow">
+      <h4 class="text-lg font-semibold text-pink-700 mb-3 tracking-wide">
+       Krim Mata Revitalizing
+      </h4>
+      <p class="text-gray-600 flex-grow leading-relaxed">
+       Kurangi bengkak dan lingkaran hitam dengan krim mata yang menutrisi ini.
+      </p>
+      <div class="mt-6 flex items-center justify-between">
+       <span class="text-pink-600 font-extrabold text-xl tracking-wide">
+        Rp499.000
+       </span>
+       <button aria-label="Tambah Krim Mata Revitalizing ke keranjang" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2 rounded-full shadow-lg transition font-semibold add-to-cart">
+        Tambah
+       </button>
+      </div>
+     </div>
+    </article>
+   </div>
+  </section>
+  <!-- Fitur Menarik Section -->
+  <section class="bg-white py-16 px-6 md:px-0 container mx-auto" id="fitur">
+   <h3 class="text-3xl font-extrabold text-pink-700 mb-12 text-center tracking-wide drop-shadow-sm">
+    Fitur Menarik Toko Kosmetik Ella
+   </h3>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+    <div class="flex flex-col items-center text-center p-8 bg-pink-50 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <i class="fas fa-gift text-pink-600 text-6xl mb-8 drop-shadow-md">
+     </i>
+     <h4 class="text-2xl font-extrabold mb-4 text-pink-700 tracking-wide">
+      Hadiah Spesial
+     </h4>
+     <p class="text-gray-700 max-w-xs leading-relaxed">
+      Dapatkan hadiah menarik setiap pembelian produk tertentu. Nikmati promo dan bonus eksklusif dari kami.
+     </p>
+    </div>
+    <div class="flex flex-col items-center text-center p-8 bg-pink-50 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <i class="fas fa-shipping-fast text-pink-600 text-6xl mb-8 drop-shadow-md">
+     </i>
+     <h4 class="text-2xl font-extrabold mb-4 text-pink-700 tracking-wide">
+      Pengiriman Cepat &amp; Gratis
+     </h4>
+     <p class="text-gray-700 max-w-xs leading-relaxed">
+      Nikmati pengiriman cepat dan gratis untuk pembelian di atas Rp500.000 ke seluruh Indonesia.
+     </p>
+    </div>
+    <div class="flex flex-col items-center text-center p-8 bg-pink-50 rounded-3xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <i class="fas fa-leaf text-pink-600 text-6xl mb-8 drop-shadow-md">
+     </i>
+     <h4 class="text-2xl font-extrabold mb-4 text-pink-700 tracking-wide">
+      Produk Ramah Lingkungan
+     </h4>
+     <p class="text-gray-700 max-w-xs leading-relaxed">
+      Semua produk kami dibuat dengan bahan alami dan ramah lingkungan, tanpa uji coba pada hewan.
+     </p>
+    </div>
+   </div>
+  </section>
+  <!-- Tentang Kami Section -->
+  <section class="bg-white py-16 px-6 md:px-0 container mx-auto flex flex-col md:flex-row items-center gap-12" id="tentang">
+   <div class="md:w-1/2 rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition duration-500">
+    <img alt="Tim Toko Kosmetik Ella bekerja bersama di kantor modern yang terang dengan produk kosmetik di meja" class="w-full object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/067910e6-bdea-446f-3471-bdc3873a6a7c.jpg" width="600"/>
+   </div>
+   <div class="md:w-1/2">
+    <h3 class="text-3xl font-extrabold text-pink-700 mb-6 tracking-wide drop-shadow-sm">
+     Tentang Toko Kosmetik Ella
+    </h3>
+    <p class="text-gray-700 mb-6 leading-relaxed text-lg">
+     Toko Kosmetik Ella berdedikasi untuk memberdayakan pecinta kecantikan dengan produk kosmetik berkualitas tinggi, bebas kekejaman, dan inovatif. Misi kami adalah membantu Anda mengekspresikan kecantikan unik dengan percaya diri dan penuh perawatan.
+    </p>
+    <p class="text-gray-700 mb-8 leading-relaxed text-lg">
+     Didirikan pada tahun 2015, kami telah berkembang menjadi merek terpercaya yang dikenal karena komitmen kami terhadap bahan alami, keberlanjutan, dan kepuasan pelanggan.
+    </p>
+    <a aria-label="Hubungi Kami" class="inline-block bg-pink-600 hover:bg-pink-700 text-white font-semibold px-10 py-4 rounded-full shadow-xl transition transform hover:scale-105" href="#kontak" role="button">
+     Hubungi Kami
+    </a>
+   </div>
+  </section>
+  <!-- Blog Section -->
+  <section class="container mx-auto px-6 py-16" id="blog">
+   <h3 class="text-3xl font-extrabold text-pink-700 mb-12 text-center tracking-wide drop-shadow-sm">
+    Artikel Terbaru
+   </h3>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <article class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition overflow-hidden flex flex-col transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <img alt="Tata letak produk skincare dan bunga segar di atas latar marmer putih" class="w-full h-48 object-cover rounded-t-3xl" height="250" src="https://storage.googleapis.com/a1aa/image/3d53787e-c3b4-4569-a6eb-28302f1c0960.jpg" width="400"/>
+     <div class="p-6 flex flex-col flex-grow">
+      <h4 class="text-xl font-extrabold text-pink-700 mb-3 tracking-wide">
+       5 Tips Rutinitas Skincare Esensial
+      </h4>
+      <p class="text-gray-600 flex-grow leading-relaxed">
+       Pelajari cara membangun rutinitas skincare sederhana namun efektif untuk kulit bercahaya setiap hari.
+      </p>
+      <a class="mt-6 text-pink-600 font-semibold hover:underline self-start tracking-wide" href="#" role="link" tabindex="0">
+       Baca Selengkapnya →
+      </a>
+     </div>
+    </article>
+    <article class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition overflow-hidden flex flex-col transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <img alt="Close-up wanita mengaplikasikan makeup trendi dengan eyeshadow bold dan bibir glossy" class="w-full h-48 object-cover rounded-t-3xl" height="250" src="https://storage.googleapis.com/a1aa/image/d761f289-9596-4328-be9d-e93bfbcae76c.jpg" width="400"/>
+     <div class="p-6 flex flex-col flex-grow">
+      <h4 class="text-xl font-extrabold text-pink-700 mb-3 tracking-wide">
+       Tren Makeup Terbaru 2024
+      </h4>
+      <p class="text-gray-600 flex-grow leading-relaxed">
+       Temukan tren makeup terhangat dan cara membuatnya dengan produk Ella Cosmetics.
+      </p>
+      <a class="mt-6 text-pink-600 font-semibold hover:underline self-start tracking-wide" href="#" role="link" tabindex="0">
+       Baca Selengkapnya →
+      </a>
+     </div>
+    </article>
+    <article class="bg-white rounded-3xl shadow-lg hover:shadow-2xl transition overflow-hidden flex flex-col transform hover:-translate-y-1 hover:scale-105 duration-300">
+     <img alt="Close-up bahan kosmetik alami seperti lidah buaya, madu, dan bunga di atas meja kayu" class="w-full h-48 object-cover rounded-t-3xl" height="250" src="https://storage.googleapis.com/a1aa/image/79e76057-9eab-41b2-9c6c-a47f03bd6eaf.jpg" width="400"/>
+     <div class="p-6 flex flex-col flex-grow">
+      <h4 class="text-xl font-extrabold text-pink-700 mb-3 tracking-wide">
+       Manfaat Bahan Alami dalam Kosmetik
+      </h4>
+      <p class="text-gray-600 flex-grow leading-relaxed">
+       Mengapa bahan alami penting dan bagaimana mereka meningkatkan kesehatan kulit Anda.
+      </p>
+      <a class="mt-6 text-pink-600 font-semibold hover:underline self-start tracking-wide" href="#" role="link" tabindex="0">
+       Baca Selengkapnya →
+      </a>
+     </div>
+    </article>
+   </div>
+  </section>
+  <!-- Kontak Section -->
+  <section class="bg-pink-50 py-16 px-6 md:px-0 container mx-auto max-w-4xl rounded-3xl shadow-2xl" id="kontak">
+   <h3 class="text-3xl font-extrabold text-pink-700 mb-10 text-center tracking-wide drop-shadow-sm">
+    Hubungi Kami
+   </h3>
+   <form aria-label="Formulir kontak" class="bg-white p-10 rounded-3xl shadow-lg" id="contact-form">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+     <div>
+      <label class="block text-pink-700 font-semibold mb-3 text-lg" for="nama">
+       Nama
+      </label>
+      <input class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300 transition" id="nama" name="nama" placeholder="Nama lengkap Anda" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-pink-700 font-semibold mb-3 text-lg" for="email">
+       Email
+      </label>
+      <input class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300 transition" id="email" name="email" placeholder="email@contoh.com" required="" type="email"/>
+     </div>
+    </div>
+    <div class="mb-8">
+     <label class="block text-pink-700 font-semibold mb-3 text-lg" for="subjek">
+      Subjek
+     </label>
+     <input class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300 transition" id="subjek" name="subjek" placeholder="Subjek pesan Anda" required="" type="text"/>
+    </div>
+    <div class="mb-8">
+     <label class="block text-pink-700 font-semibold mb-3 text-lg" for="pesan">
+      Pesan
+     </label>
+     <textarea class="w-full border border-gray-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-4 focus:ring-pink-300 transition" id="pesan" name="pesan" placeholder="Tulis pesan Anda di sini..." required="" rows="6"></textarea>
+    </div>
+    <div class="text-center">
+     <button class="bg-pink-600 hover:bg-pink-700 text-white font-extrabold px-14 py-4 rounded-full shadow-xl transition transform hover:scale-105" type="submit">
+      Kirim Pesan
+     </button>
+    </div>
+   </form>
+   <div class="mt-6 text-center text-green-600 font-semibold hidden" id="success-message">
+    Terima kasih! Pesan Anda telah terkirim.
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 mt-20">
+   <div class="container mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
+    <p>
+     © 2024 Toko Kosmetik Ella. Semua hak dilindungi.
+    </p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+     <a aria-label="Facebook" class="hover:text-pink-600 transition text-lg" href="#" title="Facebook">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a aria-label="Instagram" class="hover:text-pink-600 transition text-lg" href="#" title="Instagram">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
+     <a aria-label="Twitter" class="hover:text-pink-600 transition text-lg" href="#" title="Twitter">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a aria-label="Pinterest" class="hover:text-pink-600 transition text-lg" href="#" title="Pinterest">
+      <i class="fab fa-pinterest-p">
+      </i>
+     </a>
+    </div>
+   </div>
+  </footer>
+  <!-- Modal Keranjang -->
+  <div aria-hidden="true" aria-labelledby="cart-modal-title" aria-modal="true" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="cart-modal" role="dialog">
+   <div class="bg-white rounded-3xl shadow-2xl max-w-lg w-full p-8 relative">
+    <button aria-label="Tutup modal keranjang" class="absolute top-6 right-6 text-gray-600 hover:text-pink-600 text-3xl font-bold focus:outline-none" id="close-cart-modal" title="Tutup">
+     ×
+    </button>
+    <h4 class="text-3xl font-extrabold text-pink-700 mb-8 tracking-wide" id="cart-modal-title">
+     Keranjang Belanja Anda
+    </h4>
+    <ul aria-live="polite" aria-relevant="additions removals" class="divide-y divide-gray-200 max-h-72 overflow-y-auto mb-8" id="cart-items-list" tabindex="0">
+     <li class="text-gray-600 text-center py-6 text-lg" id="empty-cart-message">
+      Keranjang Anda kosong.
+     </li>
+    </ul>
+    <div class="flex justify-between font-extrabold text-2xl text-pink-700 mb-8" id="cart-total-container" style="display:none;">
+     <span>
+      Total:
+     </span>
+     <span id="cart-total-price">
+      Rp0
+     </span>
+    </div>
+    <div class="flex justify-end space-x-6">
+     <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold px-8 py-3 rounded-2xl shadow-md transition" id="clear-cart-button" type="button">
+      Bersihkan
+     </button>
+     <button class="bg-pink-600 hover:bg-pink-700 text-white font-extrabold px-8 py-3 rounded-2xl shadow-lg transition" id="checkout-button" type="button">
+      Checkout
+     </button>
+    </div>
+   </div>
+  </div>
+  <!-- Search Modal -->
+  <div aria-hidden="true" aria-labelledby="search-modal-title" aria-modal="true" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="search-modal" role="dialog">
+   <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 relative">
+    <button aria-label="Tutup modal pencarian" class="absolute top-6 right-6 text-gray-600 hover:text-pink-600 text-3xl font-bold focus:outline-none" id="close-search-modal" title="Tutup">
+     ×
+    </button>
+    <h4 class="text-3xl font-extrabold text-pink-700 mb-8 text-center tracking-wide" id="search-modal-title">
+     Cari Produk
+    </h4>
+    <input aria-label="Input pencarian produk" autocomplete="off" class="w-full border border-gray-300 rounded-3xl px-6 py-4 text-lg focus:outline-none focus:ring-4 focus:ring-pink-300 transition" id="search-input" placeholder="Ketik nama produk..." type="text"/>
+    <ul aria-live="polite" aria-relevant="additions removals" class="mt-6 max-h-72 overflow-y-auto divide-y divide-gray-200 rounded-xl shadow-inner" id="search-results" role="listbox" tabindex="0">
+    </ul>
+   </div>
+  </div>
+  <script>
+   // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Cart functionality
+    const cartCount = document.getElementById('cart-count');
+    const cartModal = document.getElementById('cart-modal');
+    const cartButton = document.getElementById('cart-button');
+    const closeCartModal = document.getElementById('close-cart-modal');
+    const cartItemsList = document.getElementById('cart-items-list');
+    const emptyCartMessage = document.getElementById('empty-cart-message');
+    const cartTotalContainer = document.getElementById('cart-total-container');
+    const cartTotalPrice = document.getElementById('cart-total-price');
+    const clearCartButton = document.getElementById('clear-cart-button');
+    const checkoutButton = document.getElementById('checkout-button');
+
+    let cart = [];
+
+    function formatRupiah(number) {
+      return 'Rp' + number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function updateCartCount() {
+      cartCount.textContent = cart.length;
+      if(cart.length === 0) {
+        cartCount.classList.add('hidden');
+      } else {
+        cartCount.classList.remove('hidden');
+      }
+    }
+
+    function renderCart() {
+      cartItemsList.innerHTML = '';
+      if(cart.length === 0) {
+        emptyCartMessage.style.display = 'block';
+        cartTotalContainer.style.display = 'none';
+      } else {
+        emptyCartMessage.style.display = 'none';
+        cartTotalContainer.style.display = 'flex';
+        let total = 0;
+        cart.forEach((item, index) => {
+          total += item.price;
+          const li = document.createElement('li');
+          li.className = 'py-4 flex justify-between items-center';
+          li.innerHTML = `
+            <div>
+              <p class="font-semibold text-pink-700">${item.name}</p>
+              <p class="text-gray-600 text-sm">Harga: ${formatRupiah(item.price)}</p>
+            </div>
+            <button aria-label="Hapus ${item.name} dari keranjang" class="text-red-600 hover:text-red-800 font-bold text-2xl remove-cart-item" data-index="${index}">&times;</button>
+          `;
+          cartItemsList.appendChild(li);
+        });
+        cartTotalPrice.textContent = formatRupiah(total);
+      }
+    }
+
+    function addToCart(name, price) {
+      cart.push({name, price});
+      updateCartCount();
+      renderCart();
+    }
+
+    cartButton.addEventListener('click', () => {
+      cartModal.classList.remove('hidden');
+      cartModal.classList.add('flex');
+      renderCart();
+      cartModal.querySelector('ul').focus();
+    });
+
+    closeCartModal.addEventListener('click', () => {
+      cartModal.classList.add('hidden');
+      cartModal.classList.remove('flex');
+      cartButton.focus();
+    });
+
+    clearCartButton.addEventListener('click', () => {
+      cart = [];
+      updateCartCount();
+      renderCart();
+    });
+
+    checkoutButton.addEventListener('click', () => {
+      if(cart.length === 0) {
+        alert('Keranjang Anda kosong!');
+        return;
+      }
+      alert('Terima kasih telah berbelanja di Toko Kosmetik Ella! Total pembayaran: ' + cartTotalPrice.textContent);
+      cart = [];
+      updateCartCount();
+      renderCart();
+      cartModal.classList.add('hidden');
+      cartModal.classList.remove('flex');
+      cartButton.focus();
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('remove-cart-item')) {
+        const index = e.target.getAttribute('data-index');
+        cart.splice(index, 1);
+        updateCartCount();
+        renderCart();
+      }
+    });
+
+    // Add to cart buttons
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const card = e.target.closest('article');
+        const name = card.querySelector('h4').textContent.trim();
+        const priceText = card.querySelector('span').textContent.trim();
+        // Convert Rp to number
+        const price = Number(priceText.replace(/[^0-9]/g, ''));
+        addToCart(name, price);
+        // Focus cart button for accessibility
+        cartButton.focus();
+      });
+    });
+
+    // Search modal functionality
+    const searchButton = document.getElementById('search-button');
+    const searchModal = document.getElementById('search-modal');
+    const closeSearchModal = document.getElementById('close-search-modal');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+
+    // Collect product data for search
+    const products = Array.from(document.querySelectorAll('#produk article')).map(article => {
+      return {
+        name: article.querySelector('h4').textContent.trim(),
+        priceText: article.querySelector('span').textContent.trim(),
+        price: Number(article.querySelector('span').textContent.trim().replace(/[^0-9]/g, '')),
+        imgSrc: article.querySelector('img').src,
+        imgAlt: article.querySelector('img').alt
+      };
+    });
+
+    searchButton.addEventListener('click', () => {
+      searchModal.classList.remove('hidden');
+      searchModal.classList.add('flex');
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+      searchInput.focus();
+    });
+
+    closeSearchModal.addEventListener('click', () => {
+      searchModal.classList.add('hidden');
+      searchModal.classList.remove('flex');
+      searchButton.focus();
+    });
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      searchResults.innerHTML = '';
+      if(query.length === 0) return;
+      const filtered = products.filter(p => p.name.toLowerCase().includes(query));
+      if(filtered.length === 0) {
+        searchResults.innerHTML = '<li class="py-4 text-center text-gray-600">Produk tidak ditemukan.</li>';
+        return;
+      }
+      filtered.forEach(product => {
+        const li = document.createElement('li');
+        li.className = 'flex items-center space-x-4 py-3 cursor-pointer hover:bg-pink-50 rounded-md px-4';
+        li.setAttribute('role', 'option');
+        li.setAttribute('tabindex', '0');
+        li.innerHTML = `
+          <img src="${product.imgSrc}" alt="${product.imgAlt}" class="w-16 h-16 object-cover rounded-md flex-shrink-0"/>
+          <div class="flex-grow">
+            <p class="font-semibold text-pink-700">${product.name}</p>
+            <p class="text-pink-600 font-bold">${product.priceText}</p>
+          </div>
+          <button aria-label="Tambah ${product.name} ke keranjang" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-1 rounded-full text-sm add-to-cart-search">
+            Tambah
+          </button>
+        `;
+        searchResults.appendChild(li);
+
+        li.querySelector('.add-to-cart-search').addEventListener('click', (e) => {
+          e.stopPropagation();
+          addToCart(product.name, product.price);
+          alert(`Produk "${product.name}" berhasil ditambahkan ke keranjang.`);
+          searchInput.value = '';
+          searchResults.innerHTML = '';
+          searchInput.focus();
+        });
+
+        li.addEventListener('click', () => {
+          alert(`Anda memilih produk: ${product.name}`);
+        });
+
+        li.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            li.click();
+          }
+        });
+      });
+    });
+
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Simple form validation could be added here
+      successMessage.classList.remove('hidden');
+      contactForm.reset();
+      setTimeout(() => {
+        successMessage.classList.add('hidden');
+      }, 5000);
+    });
+  </script>
+ </body>
+</html>
